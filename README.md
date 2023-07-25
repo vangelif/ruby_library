@@ -36,21 +36,6 @@ Ruby
 
 ### Tech Stack <a name="tech-stack"></a>
 
-<!-- <details>
-  <summary>Client</summary>
-  <ul>
-    <li><a href="https://reactjs.org/">React.js</a></li>
-  </ul>
-</details>
-
-<details>
-  <summary>Server</summary>
-  <ul>
-    <li><a href="https://expressjs.com/">Express.js</a></li>
-  </ul>
-</details>
-
-<details> -->
 <summary>Ruby</summary>
   <ul>
     <li><a href="https://www.ruby.org/">Ruby</a></li>
@@ -67,20 +52,8 @@ Ruby
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- LIVE DEMO
-
-## 🚀 Live Demo <a name="live-demo"></a>
-
-TBA
-
-- [Live Demo Link](<TBA>)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p> -->
-
-<!-- GETTING STARTED -->
 
 ## 💻 Getting Started <a name="getting-started"></a>
-
 
 
 To get a local copy up and running, follow these steps.
