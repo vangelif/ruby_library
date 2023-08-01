@@ -9,4 +9,8 @@ class Teacher < Person
   def can_use_services?
     true
   end
+
+  def to_s
+    "[Teacher 👨‍🏫], ID: #{@id}, Name: #{@name}, age: #{@age}, specialization: #{@specialization}"
+  end
 end
