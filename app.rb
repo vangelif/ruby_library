@@ -4,6 +4,7 @@ require_relative 'student'
 require_relative 'rental'
 # require_relative 'classroom'
 require_relative 'teacher'
+require_relative 'file_handler'
 # require 'pry'
 
 class App
@@ -14,6 +15,20 @@ class App
     @persons = []
     @rentals = []
   end
+
+  # Save all data
+  def save
+    books = FileHandler.new(:book, @books)
+    persons = FileHandler.new(:person, @persons)
+    rentals = FileHandler.new(:rental, @rentals)
+
+    books.save unless @books.empty?
+    persons.save unless @persons.empty?
+    rentals.save unless @rentals.empty?
+  end
+
+  # Load data
+  def load; end
 
   # List all books.
   def list_books
