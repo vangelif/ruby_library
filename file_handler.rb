@@ -1,4 +1,5 @@
 require_relative 'file_types'
+require 'json'
 
 class FileHandler
   include FileTypes
@@ -14,5 +15,11 @@ class FileHandler
 
   def empty?
     File.empty?("#{@path}#{@filename}")
+  end
+
+  def save
+    Dir.mkdir(@path.to_s) unless Dir.exist?(@path)
+
+    File.write("#{@path}#{@filename}", JSON.generate(@data, { max_nesting: false }))
   end
 end
