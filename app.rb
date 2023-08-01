@@ -19,18 +19,14 @@ class App
   def list_books
     puts 'List of Books:'
     @books.each do |book|
-      puts "📚 Title: #{book.title} by #{book.author}"
+      puts book
     end
   end
 
   # List all people.
   def list_people
     @persons.each do |person|
-      if person.instance_of?(Student)
-        puts "[Student 🧍], ID: #{person.id}, Name: #{person.name}, age: #{person.age}"
-      else
-        puts "[Teacher 👨‍🏫], ID: #{person.id}, Name: #{person.name}, age: #{person.age}"
-      end
+      puts person
     end
   end
 
@@ -46,8 +42,8 @@ class App
     case is_student
     when 1
       puts 'Has parent permission? [Y/N]'
-      gets.chomp.downcase
-      student = Student.new(age: age, name: person_name)
+      permission = gets.chomp.downcase == 'y'
+      student = Student.new(age: age, name: person_name, parent_permission: permission)
       @persons.push(student)
     when 2
       puts 'Specialization'
