@@ -1,3 +1,5 @@
+require 'json'
+
 class Student < Person
   attr_accessor :classroom
 
@@ -18,5 +20,15 @@ class Student < Person
   def to_s
     permission = @parent_permission ? 'yes' : 'no'
     "[Student 🧍], ID: #{@id}, Name: #{@name}, age: #{@age}, has parent's permission?: #{permission}"
+  end
+
+  def to_json(*_args)
+    JSON.dump({
+                type: self.class,
+                id: @id,
+                name: @name,
+                age: @age,
+                parent_permission: @parent_permission
+              })
   end
 end

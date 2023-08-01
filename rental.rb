@@ -1,3 +1,5 @@
+require 'json'
+
 class Rental
   attr_accessor :date, :book, :person
 
@@ -11,5 +13,11 @@ class Rental
 
   def to_s
     "Date: #{@date}, #{@book} 🤝"
+  end
+
+  def to_json(*_args)
+    JSON.dump({
+                date: @date
+              })
   end
 end

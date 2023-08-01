@@ -1,3 +1,5 @@
+require 'json'
+
 class Teacher < Person
   attr_accessor :specialization
 
@@ -12,5 +14,15 @@ class Teacher < Person
 
   def to_s
     "[Teacher 👨‍🏫], ID: #{@id}, Name: #{@name}, age: #{@age}, specialization: #{@specialization}"
+  end
+
+  def to_json(*_args)
+    JSON.dump({
+                type: self.class,
+                id: @id,
+                name: @name,
+                age: @age,
+                specialization: @specialization
+              })
   end
 end

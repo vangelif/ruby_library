@@ -1,3 +1,5 @@
+require 'json'
+
 class Book
   attr_accessor :title, :author, :rentals
 
@@ -13,5 +15,12 @@ class Book
 
   def to_s
     "📚 Title: #{@title} by #{@author}"
+  end
+
+  def to_json(*_args)
+    JSON.dump({
+                title: @title,
+                author: @author
+              })
   end
 end
