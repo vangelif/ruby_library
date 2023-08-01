@@ -14,4 +14,9 @@ class Student < Person
     @classroom = classroom
     @classroom = classroom.students.push(self) unless classroom.students.include?(self)
   end
+
+  def to_s
+    permission = @parent_permission ? 'yes' : 'no'
+    "[Student 🧍], ID: #{@id}, Name: #{@name}, age: #{@age}, has parent's permission?: #{permission}"
+  end
 end
