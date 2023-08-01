@@ -95,8 +95,6 @@ def list_rentals
   input_person_id = gets.chomp.to_i
   puts 'Rentals'
   @rentals.each do |rental|
-    if rental.person.id == input_person_id
-      puts "Date: #{rental.date}, Book: '#{rental.book.title}' by #{rental.book.author} 🤝"
-    end
+    puts rental if rental.person.id == input_person_id
   end
 end
