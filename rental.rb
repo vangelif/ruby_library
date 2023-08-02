@@ -1,4 +1,6 @@
 require 'json'
+require_relative 'book'
+require_relative 'person'
 
 class Rental
   attr_accessor :date, :book, :person
@@ -17,12 +19,33 @@ class Rental
 
   def to_json(*_args)
     JSON.dump({
-                date: @date
+                date: @date,
+                book_id: @book.id,
+                person_id: @person.id
               })
   end
 
-  def self.from_json(string)
-    data = JSON.load string
-    self.new(data['date'])
+  # self.from_json is a class method
+  #   - string is rental in JSON format
+  #   - books is the array of books in the App
+  #   - persons is the array of persons in the App
+  def self.from_json(string, books, persons)
+    # when we parse the rental (string)
+    data = JSON.parse string
+    # we extract the book_id that it is a number
+    book_id = data['book_id']
+    # then we extract the person_id that it is a number too
+    person_id = data['person_id']
+
+    # then we search for the book(object) with the id of book_id
+    #  - this is done with the class method self.select in Book class
+    book = Book.select(book_id, books)
+    # then we search for the person(object) with the id of person_id
+    #  - this is done with the class method self.select in Person class
+    person = Person.select(person_id, persons)
+
+    # once we have a book object and a person object
+    # we can proceed to create the rental
+    new(data['date'], book, person)
   end
 end
