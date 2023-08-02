@@ -65,7 +65,6 @@ describe Rental do
       person = Teacher.new(name: 'Mr. Smith', age: 35, specialization: 'Chemistry', id: 1313)
       book = Book.new(title: 'Chemistry for newbies', author: 'The teacher', id: 1020)
       rental = Rental.new('2023-08-02', book, person)
-      p rental.to_json.class
       expect(rental.to_json).to be_an_instance_of String
       expect(JSON.parse(rental.to_json)).to be_an_instance_of Hash
     end
