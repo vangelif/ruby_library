@@ -8,17 +8,18 @@ require_relative 'file_handler'
 class App
   attr_accessor :books, :persons, :rentals
 
-  def initialize
-    @books = FileHandler.new(:book).load
-    @persons = FileHandler.new(:person).load
-    @rentals = FileHandler.new(:rental).load(@books, @persons)
+  def initialize(path = nil)
+    @data_path = path
+    @books = FileHandler.new(:book, @data_path).load
+    @persons = FileHandler.new(:person, @data_path).load
+    @rentals = FileHandler.new(:rental, @data_path).load(@books, @persons)
   end
 
   # Save all data
   def save
-    books = FileHandler.new(:book, @books)
-    persons = FileHandler.new(:person, @persons)
-    rentals = FileHandler.new(:rental, @rentals)
+    books = FileHandler.new(:book, @data_path, @books)
+    persons = FileHandler.new(:person, @data_path, @persons)
+    rentals = FileHandler.new(:rental, @data_path, @rentals)
 
     books.save unless @books.empty?
     persons.save unless @persons.empty?
