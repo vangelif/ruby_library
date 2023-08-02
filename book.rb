@@ -1,10 +1,10 @@
 require 'json'
-require 'pry'
 
 class Book
-  attr_accessor :title, :author, :rentals
+  attr_accessor :id, :title, :author, :rentals
 
-  def initialize(title:, author:)
+  def initialize(title:, author:, id: nil)
+    @id = id.nil? ? Random.rand(100..10_000) : id
     @title = title
     @author = author
     @rentals = []
@@ -20,14 +20,24 @@ class Book
 
   def to_json(*_args)
     JSON.dump({
+                id: @id,
                 title: @title,
                 author: @author
               })
   end
-  
+
   def self.from_json(string)
-    binding.pry
-    data = JSON.load string
-    self.new(data['title'], data['author'])
+    data = JSON.parse string
+    new(id: data['id'], title: data['title'], author: data['author'])
+  end
+
+  # self.select is a class method
+  #   it receives an id and an array of books
+  def self.select(book_id, books)
+    # books.select will do the following
+    #   - search for a book with id of book_id
+    #   - in case a book with that id exists
+    #      - it will be returned using the .first method
+    books.select { |book| book.id == book_id }.first
   end
 end
