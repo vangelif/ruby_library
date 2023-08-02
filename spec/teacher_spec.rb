@@ -12,9 +12,13 @@ describe Teacher do
     expect(teacher.age).to eq(age)
     expect(teacher.specialization).to eq(specialization)
   end
-  it 'sets id to nil if not provided' do
+  it 'id not nil if an specific id is not provided' do
     teacher = Teacher.new(name: name, age: age, specialization: specialization)
-    expect(teacher.id).to be_nil
+    expect(teacher.id).not_to be_nil
+  end
+  it 'id is set to an integer if an specific id is not provided' do
+    teacher = Teacher.new(name: name, age: age, specialization: specialization)
+    expect(teacher.id).to be_an_instance_of Integer
   end
   it 'creates a teacher object with the provided id, name, age, and specialization' do
     teacher = Teacher.new(id: id, name: name, age: age, specialization: specialization)
