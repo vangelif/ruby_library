@@ -2,7 +2,6 @@ require 'json'
 require_relative 'rental'
 require_relative 'person'
 
-
 class Book
   attr_accessor :id, :title, :author, :rentals
 
