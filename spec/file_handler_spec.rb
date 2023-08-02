@@ -56,6 +56,7 @@ describe FileHandler do
       fh = FileHandler.new(:book, 'spec/data', books)
       fh.save
       expect(fh.file_empty?(fh.full_path)).to be_falsy
+      FileUtils.rm_rf('spec/data')
     end
   end
 end
