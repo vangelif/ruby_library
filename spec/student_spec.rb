@@ -1,4 +1,5 @@
 require_relative '../student'
+require_relative '../classroom'
 
 describe Student do
   describe 'creates the Student John with an age of 14 (two params)' do
@@ -91,6 +92,21 @@ describe Student do
     it '\'play_hooky\' method returns ¯(ツ)/¯' do
       student = Student.new(name: 'Javier', age: 12, parent_permission: false, id: 1293)
       expect(student.play_hooky).to eql('¯(ツ)/¯')
+    end
+
+    it '\'add_classroom\' method adds the Classroom for that Student' do
+      classroom = Classroom.new('1-A')
+      student = Student.new(name: 'Javier', age: 12, parent_permission: false, id: 1293)
+      student.add_classroom(classroom)
+      expect(student.classroom).to be_an_instance_of Classroom
+      expect(student.classroom.eql?(classroom)).to be_truthy
+    end
+
+    it 'when a Classroom is added for a Student -> the Student is added to that Classroom' do
+      classroom = Classroom.new('1-A')
+      student = Student.new(name: 'Javier', age: 12, parent_permission: false, id: 1293)
+      student.add_classroom(classroom)
+      expect(classroom.students.include?(student)).to be_truthy
     end
   end
 
