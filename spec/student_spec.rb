@@ -86,4 +86,11 @@ describe Student do
       expect(student.id).to eql 1298
     end
   end
+
+  describe 'a Student is displayed correctly' do
+    it '\'to_s\' method returns a custom string to display a Student' do
+      student = Student.new(name: 'Javier', age: 12, parent_permission: false, id: 1293)
+      expect(student.to_s).to eql('[Student 🧍], ID: 1293, Name: Javier, age: 12, has parent\'s permission?: no')
+    end
+  end
 end
