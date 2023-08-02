@@ -3,8 +3,8 @@ require 'json'
 class Teacher < Person
   attr_accessor :specialization
 
-  def initialize(name:, age:, specialization:)
-    super(name: name, age: age)
+  def initialize(name:, age:, specialization:, id: nil)
+    super(id: id, name: name, age: age)
     @specialization = specialization
   end
 
@@ -27,7 +27,7 @@ class Teacher < Person
   end
 
   def self.from_json(string)
-    data = JSON.load string
-    self.new(data['name'], data['age'], data['specialization'])
+    data = JSON.parse string
+    new(id: data['id'], name: data['name'], age: data['age'], specialization: data['specialization'])
   end
 end
