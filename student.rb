@@ -3,8 +3,8 @@ require 'json'
 class Student < Person
   attr_accessor :classroom
 
-  def initialize(name:, age:, parent_permission: true)
-    super(name: name, age: age, parent_permission: parent_permission)
+  def initialize(name:, age:, id: nil, parent_permission: true)
+    super(id: id, name: name, age: age, parent_permission: parent_permission)
     @classroom = classroom
   end
 
@@ -31,8 +31,9 @@ class Student < Person
                 parent_permission: @parent_permission
               })
   end
+
   def self.from_json(string)
-    data = JSON.load string
-    self.new(data['name'], data['age'], data['parent_permission'])
+    data = JSON.parse string
+    new(id: data['id'], name: data['name'], age: data['age'], parent_permission: data['parent_permission'])
   end
 end
