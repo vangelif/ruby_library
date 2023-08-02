@@ -29,7 +29,6 @@ RSpec.describe Main do
         input_source.puts('1', '7') # Provide test input
         input_source.rewind
 
-
         expect(main).to receive(:choose_a_number).with(app, 1)
         expect(app).to receive(:save)
 
