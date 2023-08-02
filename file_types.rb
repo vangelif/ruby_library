@@ -13,6 +13,8 @@ module FileTypes
     obj_types = {
       book: Book,
       person: Person,
+      teacher: Teacher,
+      student: Student,
       rental: Rental
     }
     obj_types[type]
