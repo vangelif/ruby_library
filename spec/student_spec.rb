@@ -1,4 +1,5 @@
 require_relative '../student'
+require_relative '../classroom'
 
 describe Student do
   describe 'creates the Student John with an age of 14 (two params)' do
@@ -92,6 +93,21 @@ describe Student do
       student = Student.new(name: 'Javier', age: 12, parent_permission: false, id: 1293)
       expect(student.play_hooky).to eql('¯(ツ)/¯')
     end
+
+    it '\'add_classroom\' method adds the Classroom for that Student' do
+      classroom = Classroom.new('1-A')
+      student = Student.new(name: 'Javier', age: 12, parent_permission: false, id: 1293)
+      student.add_classroom(classroom)
+      expect(student.classroom).to be_an_instance_of Classroom
+      expect(student.classroom.eql?(classroom)).to be_truthy
+    end
+
+    it 'when a Classroom is added for a Student -> the Student is added to that Classroom' do
+      classroom = Classroom.new('1-A')
+      student = Student.new(name: 'Javier', age: 12, parent_permission: false, id: 1293)
+      student.add_classroom(classroom)
+      expect(classroom.students.include?(student)).to be_truthy
+    end
   end
 
   describe 'a Student is displayed correctly' do
@@ -106,12 +122,12 @@ describe Student do
       student = Student.new(name: 'Javier', age: 12, parent_permission: false, id: 1293)
       expect(student.to_json).to be_an_instance_of String
     end
-    
+
     it '\'to_json\' returned value can be parsed to a Hash' do
       student = Student.new(name: 'Javier', age: 12, parent_permission: false, id: 1293)
       expect(JSON.parse(student.to_json)).to be_an_instance_of Hash
     end
-    
+
     it '\'to_json\' method returns a valid Rental JSON string' do
       student = Student.new(name: 'Javier', age: 12, parent_permission: false, id: 1293)
       student_hash = { name: 'Javier', age: 12, parent_permission: false, id: 1293, type: Student }
