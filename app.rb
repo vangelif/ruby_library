@@ -5,14 +5,13 @@ require_relative 'rental'
 require_relative 'teacher'
 require_relative 'file_handler'
 
-
 class App
   attr_accessor :books, :persons, :rentals
 
   def initialize
     @books = FileHandler.new(:book).load
     @persons = FileHandler.new(:person).load
-    @rentals = FileHandler.new(:rental).load
+    @rentals = FileHandler.new(:rental).load(@books, @persons)
   end
 
   # Save all data
@@ -25,8 +24,6 @@ class App
     persons.save unless @persons.empty?
     rentals.save unless @rentals.empty?
   end
-
-  # Load data
 
   # List all books.
   def list_books
