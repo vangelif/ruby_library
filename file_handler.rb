@@ -6,7 +6,7 @@ class FileHandler
   def initialize(type, data = [])
     @path = 'data/'
     @filename = get_filename(type)
-    @datatype = get_objtype(type)
+    @datatype = type
     @data = data
   end
 
@@ -20,29 +20,44 @@ class FileHandler
 
   def save
     Dir.mkdir(@path.to_s) unless Dir.exist?(@path)
-    File.write("#{@path}#{@filename}", JSON.generate(@data, { max_nesting: false }))
+
+    file_content = @data.map { |obj| JSON.generate(obj, { max_nesting: false }) }
+    File.write("#{@path}#{@filename}", file_content.join("\n"))
   end
 
-# public
+  def check_type(line)
+    return get_objtype(:teacher) if line.include?('Teacher')
 
-  def load
+    return get_objtype(:student) if line.include?('Student')
+
+    get_objtype(@datatype)
+  end
+
+  # load method has books and persons as optional parameters
+  #   it will receive a books array and a persons array
+  #   when we are loading the rentals.json file
+  def load(books = nil, persons = nil)
     # return empty array if file does not exist
     # or if file exists but is empty
     return [] unless exists? || (exists? && empty?)
 
     # we read the file
-    parsed_file = JSON.load(File.read("#{@path}#{@filename}"))
+    file = File.read("#{@path}#{@filename}")
 
+    # we split the files into lines, one line per object saved
+    lines = file.split("\n")
 
+    # return the generated objects
+    lines.map do |line|
+      object_type = check_type(line)
 
-
-
-    # parsed_file.map do |data|
-    #     # p data
-    #     @datatype = data[type] if data.is_a? Person
-        
-    #   @data.push(@datatype.new(data))
-    # end
-    # @data
+      # if books and person are 'nil'
+      #   we will call from_json just with line as parameter
+      #   this will happen with objects that are Book, Student or Teacher type
+      # in case we receive and array of books and an array of persons
+      #   we will call from_json with line, books and persons
+      #   this will happen with objects that are Rental type
+      books.nil? && persons.nil? ? object_type.from_json(line) : object_type.from_json(line, books, persons)
+    end
   end
 end
