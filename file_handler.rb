@@ -3,8 +3,8 @@ require 'json'
 
 class FileHandler
   include FileTypes
-  def initialize(type, data = [])
-    @path = 'data/'
+  def initialize(type, path, data = [])
+    @path = path
     @filename = get_filename(type)
     @datatype = type
     @data = data
