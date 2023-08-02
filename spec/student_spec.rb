@@ -87,6 +87,13 @@ describe Student do
     end
   end
 
+  describe 'for Student functional methods' do
+    it '\'play_hooky\' method returns ¯(ツ)/¯' do
+      student = Student.new(name: 'Javier', age: 12, parent_permission: false, id: 1293)
+      expect(student.play_hooky).to eql('¯(ツ)/¯')
+    end
+  end
+
   describe 'a Student is displayed correctly' do
     it '\'to_s\' method returns a custom string to display a Student' do
       student = Student.new(name: 'Javier', age: 12, parent_permission: false, id: 1293)
