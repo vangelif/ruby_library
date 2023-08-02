@@ -8,7 +8,7 @@ require_relative 'file_handler'
 class App
   attr_accessor :books, :persons, :rentals
 
-  def initialize(path = nil)
+  def initialize(path = 'data')
     @data_path = path
     @books = FileHandler.new(:book, @data_path).load
     @persons = FileHandler.new(:person, @data_path).load
