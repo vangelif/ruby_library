@@ -93,4 +93,22 @@ describe Student do
       expect(student.to_s).to eql('[Student 🧍], ID: 1293, Name: Javier, age: 12, has parent\'s permission?: no')
     end
   end
+
+  describe 'a Student is converted to JSON for saving it to \'persons.json\' file' do
+    it '\'to_json\' method returns JSON hash object ready to write it to \'persons.json\' file' do
+      student = Student.new(name: 'Javier', age: 12, parent_permission: false, id: 1293)
+      expect(student.to_json).to be_an_instance_of String
+    end
+    
+    it '\'to_json\' returned value can be parsed to a Hash' do
+      student = Student.new(name: 'Javier', age: 12, parent_permission: false, id: 1293)
+      expect(JSON.parse(student.to_json)).to be_an_instance_of Hash
+    end
+    
+    it '\'to_json\' method returns a valid Rental JSON string' do
+      student = Student.new(name: 'Javier', age: 12, parent_permission: false, id: 1293)
+      student_hash = { name: 'Javier', age: 12, parent_permission: false, id: 1293, type: Student }
+      expect(JSON.parse(student.to_json)).to eql(JSON.parse(JSON.dump(student_hash)))
+    end
+  end
 end
