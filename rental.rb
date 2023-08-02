@@ -20,4 +20,9 @@ class Rental
                 date: @date
               })
   end
+
+  def self.from_json(string)
+    data = JSON.load string
+    self.new(data['date'])
+  end
 end

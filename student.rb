@@ -31,4 +31,8 @@ class Student < Person
                 parent_permission: @parent_permission
               })
   end
+  def self.from_json(string)
+    data = JSON.load string
+    self.new(data['name'], data['age'], data['parent_permission'])
+  end
 end

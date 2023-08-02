@@ -25,4 +25,9 @@ class Teacher < Person
                 specialization: @specialization
               })
   end
+
+  def self.from_json(string)
+    data = JSON.load string
+    self.new(data['name'], data['age'], data['specialization'])
+  end
 end

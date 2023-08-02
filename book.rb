@@ -1,4 +1,5 @@
 require 'json'
+require 'pry'
 
 class Book
   attr_accessor :title, :author, :rentals
@@ -22,5 +23,11 @@ class Book
                 title: @title,
                 author: @author
               })
+  end
+  
+  def self.from_json(string)
+    binding.pry
+    data = JSON.load string
+    self.new(data['title'], data['author'])
   end
 end
