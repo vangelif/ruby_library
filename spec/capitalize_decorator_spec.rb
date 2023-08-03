@@ -1,17 +1,29 @@
-require_relative 'capitalize_decorator.rb'
+require_relative '../capitalize_decorator'
+require_relative '../decorator.rb'
 
-describe CapitalizeDecorator do
-    let(:decorated_object) { double('decorated_object', correct_name: 'john doe') }
-    subject(:decorator) { described_class.new(decorated_object) }
-  
-    describe '#correct_name' do
-      it 'returns the correct name with the first letter capitalized' do
-        expect(decorator.correct_name).to eq('John doe')
-      end
-  
-      it 'calls the correct_name method on the decorated object' do
-        expect(decorated_object).to receive(:correct_name).and_return('john doe')
-        decorator.correct_name
-      end
+RSpec.describe CapitalizeDecorator do
+  describe "#correct_name" do
+    let(:nameable_mock) { double("nameable") }
+    subject { CapitalizeDecorator.new(nameable_mock) }
+
+    it "delegates correct_name to the nameable object and capitalizes the result" do
+      allow(nameable_mock).to receive(:correct_name).and_return("john doe")
+      expect(subject.correct_name).to eq("John Doe")
     end
+
+    it "capitalizes correctly when the nameable object returns an already capitalized name" do
+      allow(nameable_mock).to receive(:correct_name).and_return("John Doe")
+      expect(subject.correct_name).to eq("John Doe")
+    end
+
+    it "capitalizes correctly when the nameable object returns an all-uppercase name" do
+      allow(nameable_mock).to receive(:correct_name).and_return("JOHN DOE")
+      expect(subject.correct_name).to eq("John Doe")
+    end
+
+    it "capitalizes correctly when the nameable object returns a mix of uppercase and lowercase" do
+      allow(nameable_mock).to receive(:correct_name).and_return("jOhN dOe")
+      expect(subject.correct_name).to eq("John Doe")
+    end
+  end
 end
