@@ -134,8 +134,8 @@ Example:
 
 👤 **Luiz Zubia**
 
-- GitHub: [@vangelif](https://github.com/luigirazum)
-- Twitter: [@vangfot](https://twitter.com/luigirazum)
+- GitHub: [@luigirazum](https://github.com/luigirazum)
+- Twitter: [@luigirazum](https://twitter.com/luigirazum)
 - LinkedIn: [Connect](https://www.linkedin.com/in/luiszubia/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
