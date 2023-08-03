@@ -2,17 +2,27 @@ require_relative 'book'
 require_relative 'person'
 require_relative 'student'
 require_relative 'rental'
-# require_relative 'classroom'
 require_relative 'teacher'
-# require 'pry'
+require_relative 'file_handler'
 
 class App
   attr_accessor :books, :persons, :rentals
 
   def initialize
-    @books = []
-    @persons = []
-    @rentals = []
+    @books = FileHandler.new(:book).load
+    @persons = FileHandler.new(:person).load
+    @rentals = FileHandler.new(:rental).load(@books, @persons)
+  end
+
+  # Save all data
+  def save
+    books = FileHandler.new(:book, @books)
+    persons = FileHandler.new(:person, @persons)
+    rentals = FileHandler.new(:rental, @rentals)
+
+    books.save unless @books.empty?
+    persons.save unless @persons.empty?
+    rentals.save unless @rentals.empty?
   end
 
   # List all books.

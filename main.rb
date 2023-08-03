@@ -19,6 +19,7 @@ class Main
       choose_a_number(@app, choice)
     end
 
+    @app.save
     puts '👋 Sorry to see you leaving..'
   end
 end
