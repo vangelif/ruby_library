@@ -1,5 +1,15 @@
 require 'json'
 
+class Person
+  attr_accessor :id, :name, :age
+
+  def initialize(id:, name:, age:)
+    @id = id
+    @name = name
+    @age = age
+  end
+end
+
 class Teacher < Person
   attr_accessor :specialization
 
