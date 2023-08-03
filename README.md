@@ -8,7 +8,6 @@
   - [🛠 Built With](#built-with)
     - [Tech Stack](#tech-stack)
     - [Key Features](#key-features)
-  - [🚀 Live Demo](#live-demo)
 - [💻 Getting Started](#getting-started)
   - [Setup](#setup)
   - [Prerequisites](#prerequisites)
@@ -21,7 +20,6 @@
 - [🤝 Contributing](#contributing)
 - [⭐️ Show your support](#support)
 - [🙏 Acknowledgements](#acknowledgements)
-- [❓ FAQ](#faq)
 - [📝 License](#license)
 
 <!-- PROJECT DESCRIPTION -->
@@ -133,6 +131,12 @@ Example:
 - GitHub: [@vangelif](https://github.com/vangelif)
 - Twitter: [@vangfot](https://twitter.com/vangfot)
 - LinkedIn: [Connect](https://linkedin.com/in/vangfot)
+
+👤 **Luiz Zubia**
+
+- GitHub: [@vangelif](https://github.com/luigirazum)
+- Twitter: [@vangfot](https://twitter.com/luigirazum)
+- LinkedIn: [Connect](https://www.linkedin.com/in/luiszubia/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
