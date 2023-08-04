@@ -1,3 +1,4 @@
+require_relative 'person'
 require 'json'
 
 class Student < Person
@@ -5,7 +6,7 @@ class Student < Person
 
   def initialize(name:, age:, id: nil, parent_permission: true)
     super(id: id, name: name, age: age, parent_permission: parent_permission)
-    @classroom = classroom
+    @classroom = nil
   end
 
   def play_hooky
@@ -14,7 +15,7 @@ class Student < Person
 
   def add_classroom(classroom)
     @classroom = classroom
-    @classroom = classroom.students.push(self) unless classroom.students.include?(self)
+    classroom.students.push(self) unless classroom.students.include?(self)
   end
 
   def to_s
