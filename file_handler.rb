@@ -2,6 +2,8 @@ require_relative 'file_types'
 require 'json'
 require 'pry'
 
+# STEP TWELVE: build FileHandler class which is in charge of
+# handling file-related operations such as reading, writing, loading data 
 class FileHandler
   include FileTypes
   def initialize(type, data_folder, data = [])
@@ -11,6 +13,9 @@ class FileHandler
     @data = data
   end
 
+  # STEP THIRTEEN: build methods for tasks such as
+  # parsing objects, constructing file paths, read and write files
+  # creating directories, check file existance and emptiness
   def parse_obj(params)
     type = params[:type]
     line = params[:line]
