@@ -1,6 +1,7 @@
 require_relative 'person'
 require 'json'
-
+# STEP FOUR: build a Student class 
+# with its attributes and methods specific to students
 class Student < Person
   attr_accessor :classroom
 
