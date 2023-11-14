@@ -1,6 +1,10 @@
 require_relative 'person'
 require 'json'
 
+# STEP FIVE: build a Teacher class 
+# inheriting from Person class with
+# its attributes and methods specific to teachers
+
 class Teacher < Person
   attr_accessor :specialization
 
