@@ -1,3 +1,5 @@
+# STEP FOURTEEN: build FileTypes module which helps
+# determine the file name and object type dynamically 
 module FileTypes
   def get_filename(type)
     file_types = {
