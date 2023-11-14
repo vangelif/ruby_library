@@ -1,3 +1,5 @@
+# STEP ONE: build Nameable module with its correct_name method
+# STEP TWO: build Person class with its attributes and methods
 require_relative 'nameable'
 
 class Person < Nameable
