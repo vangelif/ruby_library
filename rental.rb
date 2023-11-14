@@ -2,6 +2,9 @@ require 'json'
 require_relative 'book'
 require_relative 'person'
 
+# STEP THREE: build Rental class with  
+# its attributes: `date`, `book`, `person`
+
 class Rental
   attr_accessor :date, :book, :person
 
