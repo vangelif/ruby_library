@@ -5,9 +5,12 @@ require_relative 'rental'
 require_relative 'teacher'
 require_relative 'file_handler'
 
+# STEP TEN: build App class, the main logic of the application 
 class App
   attr_accessor :books, :persons, :rentals
 
+  # STEP ELEVEN: build initialize method that
+  # initializes data from files using the `FileHandler` class
   def initialize(path = 'data')
     @data_path = path
     @books = FileHandler.new(:book, @data_path).load
